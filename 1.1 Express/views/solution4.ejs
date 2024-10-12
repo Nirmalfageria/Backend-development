@@ -77,13 +77,7 @@
             </table>
             <p class="tag-success">Data fetched successfully!</p>
         <% } else { %>
-            <h1>Login</h1>
-            <form action="/" method="POST">
-                <input type="text" name="username" placeholder="Enter your username" required>
-                <input type="password" name="password" placeholder="Enter your password" required>
-                <button type="submit">Submit</button>
-            </form>
-
+            
             <% if (locals.error) { %>
                 <div class="tag-error">
                     <%= error %>

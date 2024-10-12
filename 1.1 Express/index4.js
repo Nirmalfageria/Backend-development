@@ -65,24 +65,30 @@ app.set('view engine', 'ejs');
 //     }
 //   }
 // );
+
+// ApiKey authentication
+app.get('/', (req, res) => {
+  res.render("index4.ejs");
+  res.send("This is the home page");
+});
+
 app.post('/', async (req, res) => {
   try {
-    let apiKey = "8c820789-22cd-4c4e-b060-2e4bbcf02c33";
+    let apiKeyResponse = await axios.get("https://secrets-api.appbrewery.com/generate-api-key");
+    let apiKey = apiKeyResponse.data.apiKey;
 
-    let dataResponse = await axios.get("https://secrets-api.appbrewery.com/filter?score=5", {
-      headers: {
-        'Authorization': `Bearer ${apiKey}`
-      }
-    });
+    let dataResponse = await axios.get(`https://secrets-api.appbrewery.com/filter?score=5&apiKey=${apiKey}`);
 
     const result = dataResponse.data;
-    res.render("solution4.ejs", { data: result });
+    res.render("solution4.ejs", { data: result, success: "Data fetched successfully!" });
 
   } catch (error) {
     console.error("Error fetching data:", error.message);
     res.render("solution4.ejs", { error: "An error occurred while fetching data. Please try again later." });
   }
 });
+
+
 
 app.listen(port, () => {
   console.log(`App is listening on port ${port}`);
