@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -83,6 +83,82 @@
                     <%= error %>
                 </div>
             <% } %>
+        <% } %>
+    </div>
+</body>
+</html> -->
+
+<!-- // TOken Authentication -->
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Data</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 600px;
+        }
+        .secret-item {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .secret-item:last-child {
+            border-bottom: none;
+        }
+        .secret-item h3 {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+        .secret-item p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+        .tag-success {
+            color: green;
+            margin-bottom: 10px;
+        }
+        .tag-error {
+            color: red;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <% if (locals.data && locals.data.length > 0) { %>
+            <h1>Secrets</h1>
+            <p class="tag-success"><%= success %></p>
+
+            <% data.forEach(function(secret) { %>
+                <div class="secret-item">
+                    <h3>Secret ID: <%= secret.id %></h3>
+                    <p><strong>Secret:</strong> <%= secret.secret %></p>
+                    <p><strong>Emotional Score:</strong> <%= secret.emScore %></p>
+                    <p><strong>Username:</strong> <%= secret.username %></p>
+                    <p><strong>Timestamp:</strong> <%= new Date(secret.timestamp).toLocaleString() %></p>
+                </div>
+            <% }) %>
+
+        <% } else { %>
+            <p class="tag-error">No secrets found.</p>
         <% } %>
     </div>
 </body>
