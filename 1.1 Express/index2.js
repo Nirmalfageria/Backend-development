@@ -41,7 +41,7 @@ app.post("/submit", (req, res) => {
 });
 
 // Start the server
-const port = 3000;
+const port = 4000;
 app.listen(port, () => {
-    console.log(`Server is running on port ${port}`);
+    console.log(`Server is running on the 8 port ${port}`);
 });
