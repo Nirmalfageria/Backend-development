@@ -1,4 +1,4 @@
-import moongoose from "mongoose";
+import mongoose from "mongoose";
 
 const prodcutSchema = new mongoose.Schema(
   {
@@ -16,7 +16,7 @@ const prodcutSchema = new mongoose.Schema(
       default: 0,
     },
     category: {
-      type: moongoose.Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "Category",
       required: true,
     },
@@ -30,7 +30,7 @@ const prodcutSchema = new mongoose.Schema(
       contentType: String,
     },
     owner:{
-        type: moongoose.Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true
     }
